@@ -1,0 +1,26 @@
+#!/bin/bash
+# This script is useful to get:
+# service_desk_id
+# issue_type_id
+# request_type_id
+# all needed to create a new issue with the API
+# put these params in config/${ENV}.ini
+
+source ./set-jira-params
+pushd . > /dev/null
+cd ../..
+
+URL=${JIRA_HOST}/rest/servicedeskapi/requesttype
+LOG=logs/get-all-req-types.json
+rm -f ${LOG}
+
+# ---
+curl \
+   -D- \
+   -X GET \
+   -H "X-ExperimentalApi: opt-in" \
+   -H "Content-Type: application/json" \
+   --user ${JIRA_USER_API_TOKEN} \
+   ${URL} | tee ${LOG}
+
+popd > /dev/null
