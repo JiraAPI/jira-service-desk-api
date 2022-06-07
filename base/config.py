@@ -22,7 +22,7 @@ class Config(PyBase):
                 self.config_parser = configparser.ConfigParser()
 
             ini_file = self.env + '.ini'
-            ini_file = os.path.join('../config', ini_file)
+            ini_file = os.path.join('config', ini_file)
             print('ini_file: ' + ini_file)
             self.read_ini(ini_file)
 

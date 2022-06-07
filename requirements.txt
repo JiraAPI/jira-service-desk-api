@@ -1,2 +1,6 @@
-python-dotenv
 pathlib2
+python-dotenv
+requests
+flask
+flask-cors
+atlassian-python-api
